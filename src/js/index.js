@@ -1,4 +1,4 @@
 import "../css/style.css";
-import { Theme } from "./darkTheme";
+import { Keyboard } from "./keyboard";
 
-new Theme("switch", "change");
+new Keyboard();
