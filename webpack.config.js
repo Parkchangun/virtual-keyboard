@@ -5,13 +5,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  entry: "./src/js/index.js",
+  entry: "./src/js/index.ts",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "./dist"),
     clean: true,
   },
   devtool: "source-map",
+  resolve: {
+    extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+  },
   mode: "development",
   devServer: {
     host: "localhost",
@@ -30,6 +33,10 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.ts?$/,
+        loader: "ts-loader",
+      },
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
